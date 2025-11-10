@@ -2,24 +2,21 @@ import pandas as pd
 
 #drops any rows or columns where ALL data is missing and returns the dataframe
 def drop_all_missing(df):
-    # Your code here
-    pass
+    return df.dropna(how="all")
 
 #drops any rows or columns where ANY data is missing and returns the dataframe
 def drop_any_missing(df):
-    # Your code here
-    pass
+    return df.dropna()
 
 #Takes in the demographic data DataFrame, returns the sum of the salary
 def find_salary_sum(df):
-    pass
+    return sum(df["Salary"].astype(int))
     
 
 #Merge two dataframes based on a common feature
 #Returns a dataframe where with any duplicate columns (i.e. same data) removed
 def merge_dataframes(df_left, df_right):
-    # Your code here
-    pass
+    return pd.merge(df_left, df_right, left_on="Name", right_on="Employee_Name").drop("Employee_Name", axis=1)
 
 def main():
     #csv data loaded
@@ -29,7 +26,7 @@ def main():
         "Salary": ["70000", "80000", "None", "120000", "90000", "None", "61000", "73000"],
         "Experience": ["5", "8", "2", "10", "9", "None", "3", "7"]
     }
-    demo_data = pd.DataFrame(data1)
+    demo_data = pd.DataFrame(demo_data_dict)
 
 
     job_description_dict = {
